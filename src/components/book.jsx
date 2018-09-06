@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Book = props => {
   return (
     <div className="book">
-      <span>{props.author}</span>
+      <span>
+        Author: {props.author}, Title: {props.bookTitle}
+      </span>
     </div>
   );
 };
