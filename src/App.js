@@ -3,43 +3,38 @@ import axios from "axios";
 import "./App.css";
 import BookList from "./components/bookList";
 
-// const books = [
-//   {
-//     id: 1,
-//     author: "Jenny Han",
-//     bookTitle: "To All The Boys I've Loved Before"
-//   },
-//   { id: 2, author: "J.D. Salinger", bookTitle: "Franny and Zooey" },
-//   { id: 3, author: "Charles Eisenstein", bookTitle: "Sacred Economics" },
-//   { id: 4, author: "Hobbes", bookTitle: "Leviathan" }
-// ];
-
 class App extends Component {
   state = {
     books: []
   };
 
   componentDidMount() {
-    // let apiKey = "fc6309a386ad42cca1a1a07ef8d49aed";
-
     axios
       .get(
-        "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=fc6309a386ad42cca1a1a07ef8d49aed"
+        "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key="
       )
       .then(response => {
-        const newBookList = response.data.results;
+        const nytBookList = response.data.results;
 
-        newBookList.map(b => {
-          // console.log("All Data", newBookList);
-
-          console.log("isbn", b.isbns[1].isbn10);
-          console.log("author", b.book_details[0].author);
-          console.log("bookTitle", b.book_details[0].title);
-          console.log("description", b.book_details[0].description);
-          console.log("rank", b.rank);
-          console.log("weeksOnList", b.weeks_on_list);
+        const filteredBookData = nytBookList.map(book => {
+          return {
+            isbn: book.isbns[1].isbn10,
+            author: book.book_details[0].author,
+            bookTitle: book.book_details[0].title,
+            description: book.book_details[0].description,
+            rank: book.rank,
+            weeksOnList: book.weeks_on_list
+          };
         });
-      });
+
+        // create a new "State" object, don't change original state
+        const newState = Object.assign({}, this.state, {
+          books: filteredBookData
+        });
+        // storing state object in the component's state
+        this.setState(newState);
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
