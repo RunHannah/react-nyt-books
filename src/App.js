@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import BookList from "./components/bookList";
+import Nav from "./components/nav";
 
 class App extends Component {
   state = {
@@ -41,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>List of NYT Books</h1>
+        <Nav />
         <BookList books={this.state.books} />
       </div>
     );
