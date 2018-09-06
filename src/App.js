@@ -11,7 +11,8 @@ class App extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key="
+        "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=" +
+          process.env.REACT_APP_NYT_API_KEY
       )
       .then(response => {
         const nytBookList = response.data.results;

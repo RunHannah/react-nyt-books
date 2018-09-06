@@ -5,8 +5,8 @@ const Book = props => {
     <div className="book">
       <span>
         ISBN: {props.isbn}, Author: {props.author}, Title: {props.bookTitle},
-        Description: {props.description}, Rank: {props.rank}, Weeks on the List:{" "}
-        {props.weeks_on_list}
+        Description: {props.description}, Rank: {props.rank}, Weeks on the List:
+        {props.weeksOnList}
       </span>
     </div>
   );
