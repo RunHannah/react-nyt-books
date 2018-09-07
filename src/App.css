@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Georgia;
 }
 
 /* .App-logo {
@@ -12,6 +13,7 @@
   to { transform: rotate(360deg); }
 } */
 
+/* book component */
 .book {
   margin: 20px;
   padding: 20px;
@@ -28,4 +30,36 @@
 .flex {
   display: flex;
   flex-wrap: wrap;
+}
+
+/* nav */
+nav {
+  background-color: white;
+  box-shadow: none;
+}
+nav .brand-logo {
+  font-family: Georgia;
+  color: black;
+}
+
+@media only screen and (min-width: 521px) {
+  nav,
+  nav .nav-wrapper {
+    height: 150px;
+  }
+
+  nav .brand-logo {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  nav,
+  nav .nav-wrapper {
+    height: 250px;
+  }
+
+  nav .brand-logo {
+    font-size: 2em;
+  }
 }

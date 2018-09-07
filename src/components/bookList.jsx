@@ -5,7 +5,7 @@ const BookList = props => {
   return (
     <div className="row flex bookList">
       {props.books.map((b, index) => (
-        <div className="col s12 m3 l4">
+        <div className="col s12 m4 l6">
           <Book
             key={index}
             // isbn={b.isbn}
