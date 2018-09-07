@@ -4,8 +4,8 @@ const Book = props => {
   return (
     <div className="book">
       <span>
-        ISBN: {props.isbn}, Author: {props.author}, Title: {props.bookTitle},
-        Description: {props.description}, Rank: {props.rank}, Weeks on the List:
+        Author: {props.author}, Title: {props.bookTitle}, Description:{" "}
+        {props.description}, Rank: {props.rank}, Weeks on the List:
         {props.weeksOnList}
       </span>
     </div>

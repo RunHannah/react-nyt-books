@@ -6,7 +6,7 @@ const Nav = () => {
       <nav>
         <div className="nav-wrapper">
           <a href="#!" className="brand-logo center">
-            New York Times Best Sellers
+            New York Times Best Sellers for Fiction
           </a>
           {/* <ul className="right hide-on-med-and-down">
             <li>

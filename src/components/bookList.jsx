@@ -3,17 +3,19 @@ import Book from "./book";
 
 const BookList = props => {
   return (
-    <div>
+    <div className="row flex bookList">
       {props.books.map((b, index) => (
-        <Book
-          key={index}
-          isbn={b.isbn}
-          author={b.author}
-          bookTitle={b.bookTitle}
-          description={b.description}
-          rank={b.rank}
-          weeksOnList={b.weeksOnList}
-        />
+        <div className="col s12 m3 l4">
+          <Book
+            key={index}
+            // isbn={b.isbn}
+            author={b.author}
+            bookTitle={b.bookTitle}
+            description={b.description}
+            rank={b.rank}
+            weeksOnList={b.weeksOnList}
+          />
+        </div>
       ))}
     </div>
   );
