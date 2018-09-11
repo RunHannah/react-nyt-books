@@ -4,11 +4,9 @@ import Book from "./book";
 const BookList = props => {
   return (
     <div className="row bookList">
-
+      <ol>
         {props.books.map((b, index) => (
-
           <div className="col s12 m12 l12" key={index}>
-
             <Book
               // key={index}
               // isbn={b.isbn}
@@ -19,11 +17,10 @@ const BookList = props => {
               rank={b.rank}
               weeksOnList={b.weeksOnList}
             />
-
-
           </div>
         ))}
 
+      </ol>
     </div>
   );
 };

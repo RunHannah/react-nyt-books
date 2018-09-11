@@ -8,7 +8,7 @@
   margin: 10px;
   padding: 10px;
   /* border: 1px solid #bbb; */
-  background-color: #eee;
+  /* background-color: #eee; */
   text-align: left;
 }
 
@@ -32,6 +32,7 @@
   font-size: 18px;
 }
 
+
 /* nav */
 nav {
   background-color: white;
@@ -46,7 +47,6 @@ nav .brand-logo {
 }
 
 .nyt-logo {
-  /* background-color: purple; */
   margin-bottom: -50px;
 }
 
@@ -68,7 +68,7 @@ nav .brand-logo {
 @media only screen and (max-width: 520px) {
   nav,
   nav .nav-wrapper {
-    height: 250px;
+    height: 150px;
   }
 
   nav .brand-logo {
@@ -77,10 +77,6 @@ nav .brand-logo {
 
   img {
     max-width: 99%;
-  }
-
-  .best-seller {
-    font-size:
   }
 
   .nav-best {
