@@ -9,7 +9,7 @@ class Nav extends Component {
           <div className="nav-wrapper">
             <a href="#!" className="brand-logo center">
               <img src={NytLogo} className="nyt-logo" alt="logo" />
-              <p className="nav-best">Best Sellers for Fiction</p>
+              <p className="nav-best">Books | Best Sellers</p>
             </a>
           </div>
         </div>

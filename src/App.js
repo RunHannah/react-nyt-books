@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
-import BookList from "./components/bookList";
 import Nav from "./components/nav";
+import Header from "./components/header";
+import BookList from "./components/bookList";
 
 class App extends Component {
   state = {
@@ -42,8 +43,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Nav />
+        <Header />
         <BookList books={this.state.books} />
       </div>
     );

@@ -1,8 +1,3 @@
-.App {
-  /* text-align: center; */
-  /* font-family: Georgia; */
-}
-
 /* book component */
 .book {
   margin: 10px;
@@ -13,18 +8,18 @@
 }
 
 .book-week {
-  font-style: arial,helvetica,sans-serif;
+  font-style: arial, helvetica, sans-serif;
 }
 
 .book-title {
   font-size: 20px;
   font-weight: bold;
-  font-style: arial,helvetica,sans-serif;
+  font-style: arial, helvetica, sans-serif;
 }
 
 .book-author {
   font-size: 20px;
-  font-style: arial,helvetica,sans-serif;
+  font-style: arial, helvetica, sans-serif;
 }
 
 .book-description {
@@ -32,25 +27,44 @@
   font-size: 18px;
 }
 
-
 /* nav */
 nav {
   background-color: white;
   box-shadow: none;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
-nav .brand-logo {
-  font-family: Georgia;
+.nav-best {
   color: black;
-  margin-top: 20px;
+  /* font-weight: 900; */
+  font-style: normal;
+  font-family: "karnak-normal-400", georgia, "times new roman", times, serif;
 }
 
 .nyt-logo {
   margin-bottom: -50px;
 }
 
-@media only screen and (min-width: 521px) {
+/* header */
+.header {
+  display: block;
+  font-size: 2.25rem;
+  line-height: 2.375rem;
+  font-weight: 700;
+  font-style: normal;
+  font-family: "cheltenham-normal-400", georgia, "times new roman", times, serif;
+  margin-top: 50px;
+}
+
+/* bookList */
+ol {
+  width: 100%;
+  margin-left: -30px;
+}
+
+/* responsiveness */
+@media only screen and (min-width: 700px) {
   nav,
   nav .nav-wrapper {
     height: 150px;
@@ -65,10 +79,10 @@ nav .brand-logo {
   }
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 699px) {
   nav,
   nav .nav-wrapper {
-    height: 150px;
+    height: 140px;
   }
 
   nav .brand-logo {
@@ -80,10 +94,18 @@ nav .brand-logo {
   }
 
   .nav-best {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .book p {
     font-size: 12px;
+  }
+
+  .header {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.375rem;
+    font-weight: 700;
+    margin-top: 15px;
   }
 }

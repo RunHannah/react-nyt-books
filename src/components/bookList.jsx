@@ -6,7 +6,7 @@ const BookList = props => {
     <div className="row bookList">
       <ol>
         {props.books.map((b, index) => (
-          <div className="col s12 m12 l12" key={index}>
+          <div key={index}>
             <Book
               // key={index}
               // isbn={b.isbn}
@@ -19,7 +19,6 @@ const BookList = props => {
             />
           </div>
         ))}
-
       </ol>
     </div>
   );
