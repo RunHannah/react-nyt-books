@@ -9,7 +9,7 @@ const BookList = props => {
           <div key={index}>
             <Book
               // key={index}
-              // isbn={b.isbn}
+              isbn={b.isbn}
               author={b.author}
               bookTitle={b.bookTitle}
               publisher={b.publisher}
