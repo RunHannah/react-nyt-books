@@ -3,12 +3,11 @@ import Book from "./book";
 
 const BookList = props => {
   return (
-    <div className="row flex bookList">
-      <ol>
+    <div className="row bookList">
 
         {props.books.map((b, index) => (
 
-          <div className="col s10 m10 l10" key={index}>
+          <div className="col s12 m12 l12" key={index}>
 
             <Book
               // key={index}
@@ -24,7 +23,7 @@ const BookList = props => {
 
           </div>
         ))}
-      </ol>
+
     </div>
   );
 };
