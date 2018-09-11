@@ -1,24 +1,15 @@
 .App {
   text-align: center;
-  font-family: Georgia;
+  /* font-family: Georgia; */
 }
-
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
 
 /* book component */
 .book {
   margin: 20px;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #bbb;
   background-color: #eee;
+  text-align: left;
 }
 
 .book span {
@@ -27,9 +18,24 @@
   color: #333;
 }
 
-.flex {
-  display: flex;
-  flex-wrap: wrap;
+.book-week {
+  font-style: arial,helvetica,sans-serif;
+}
+
+.book-title {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: arial,helvetica,sans-serif;
+}
+
+.book-author {
+  font-size: 20px;
+  font-style: arial,helvetica,sans-serif;
+}
+
+.book-description {
+  font-family: Georgia;
+  font-size: 18px;
 }
 
 /* nav */
@@ -37,9 +43,20 @@ nav {
   background-color: white;
   box-shadow: none;
 }
+
 nav .brand-logo {
   font-family: Georgia;
   color: black;
+  margin-top: 20px;
+}
+
+.nyt-logo {
+  /* background-color: purple; */
+  margin-bottom: -50px;
+}
+
+.nav-best {
+  /* background-color: yellow; */
 }
 
 @media only screen and (min-width: 521px) {
@@ -51,6 +68,10 @@ nav .brand-logo {
   nav .brand-logo {
     font-size: 2em;
   }
+
+  img {
+    max-width: 90%;
+  }
 }
 
 @media only screen and (max-width: 520px) {
@@ -61,5 +82,9 @@ nav .brand-logo {
 
   nav .brand-logo {
     font-size: 2em;
+  }
+
+  img {
+    max-width: 99%;
   }
 }

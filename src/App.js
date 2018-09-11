@@ -25,7 +25,8 @@ class App extends Component {
             bookTitle: book.book_details[0].title,
             description: book.book_details[0].description,
             rank: book.rank,
-            weeksOnList: book.weeks_on_list
+            weeksOnList: book.weeks_on_list,
+            publisher: book.book_details[0].publisher
           };
         });
 

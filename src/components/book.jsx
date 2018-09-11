@@ -2,15 +2,15 @@ import React from "react";
 
 const Book = props => {
   return (
-    <div className="book">
-      {/* <p>ISBN: {props.isbn}</p> */}
-      <p style={{ fontSize: 24, fontWeight: "bold" }}>{props.bookTitle}</p>
-      <p style={{ fontSize: 18 }}>{props.description}</p>
-      <p style={{ fontSize: 18 }}>by {props.author}</p>
-      <p>
-        Rank: {props.rank}, Weeks on the List: {props.weeksOnList}
-      </p>
-    </div>
+      <div className="book">
+        {/* <p>ISBN: {props.isbn}</p> */}
+        {props.rank}
+        <p className="book-week">Weeks on the List: {props.weeksOnList}</p>
+        <p className="book-title">{props.bookTitle.toUpperCase()}</p>
+        <p className="book-author">by {props.author} | {props.publisher}</p>
+        <p className="book-description">{props.description}</p>
+      </div>
+
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import NytLogo from "../nyt-logo.png";
 
 class Nav extends Component {
   render() {
@@ -7,7 +8,8 @@ class Nav extends Component {
         <div className="navbar-fixed">
           <div className="nav-wrapper">
             <a href="#!" className="brand-logo center">
-              New York Times Best Sellers for Fiction
+              <img src={NytLogo} className="nyt-logo" alt="logo" />
+              <p className="nav-best">Best Sellers for Fiction</p>
             </a>
           </div>
         </div>
