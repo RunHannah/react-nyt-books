@@ -2,51 +2,65 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class Book extends Component {
+  state = {
+    books: this.props,
+    imageUrl: ""
+  };
+
   getWeeksOnList() {
-    return this.props.weeksOnList === 1
+    return this.state.books.weeksOnList === 1
       ? "NEW THIS WEEK"
-      : this.props.weeksOnList + " WEEKS ON THE LIST";
+      : this.state.books.weeksOnList + " WEEKS ON THE LIST";
   }
 
   findBookCover(isbn) {
-    axios
-      .get(
-        "https://www.googleapis.com/books/v1/volumes?q=isbn:" +
-          isbn +
-          "&key=" +
-          process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
-      )
-      .then(response => {
-        let image = response.data.items[0].volumeInfo.imageLinks.thumbnail;
+    console.log("WHAT IS THE ISBN", isbn);
 
-        image = image.replace(/^http:\/\//i, "https://");
+    // fetch(
+    //   "https://www.googleapis.com/books/v1/volumes?q=isbn:" +
+    //     isbn +
+    //     "&key=" +
+    //     process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
+    // )
+    //   .then(response => {
+    //     console.log("response", response);
 
-        console.log("IMAGE", image);
-        return image;
-      })
-      .catch(error => console.log(error));
+    //     let image = response.data.items[0].volumeInfo.imageLinks.thumbnail;
+    //     image = image.replace(/^http:\/\//i, "https://");
+
+    //     console.log("Image URL", image);
+
+    //     const newState = Object.assign({}, this.state, {
+    //       imageUrl: image
+    //     });
+
+    //     this.setState(newState);
+
+    //     console.log("this.state.imageUrl", this.state.imageUrl);
+    //     return this.state.imageUrl;
+    //   })
+    //   .catch(error => console.log(error));
   }
 
-  render(props) {
-    // let isbn = this.props.isbn;
-
+  render() {
     return (
       <li className="book">
-        <p>ISBN: {this.props.isbn}</p>
-        {/* <p className="book-rank">{props.rank}</p> */}
         <p className="book-week">{this.getWeeksOnList()}</p>
-        <p className="book-title">{this.props.bookTitle.toUpperCase()}</p>
+        <p className="book-title">{this.state.books.bookTitle.toUpperCase()}</p>
         <p className="book-author">
-          by {this.props.author} | {this.props.publisher}
+          by {this.state.books.author} | {this.state.books.publisher}
         </p>
-        <p className="book-description">{this.props.description}</p>
-        IMAGE:{" "}
+        <p className="book-description">{this.state.books.description}</p>
+        {/* IMAGE:{" "}
         <img
           src="http://books.google.com/books/content?id=bPJUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
           alt="google-book"
-        />
+        /> */}
         BOOK COVER:
-        <img src={this.findBookCover(this.props.isbn)} alt="google-bookTWO" />
+        <img
+          src={this.findBookCover(this.state.books.isbn)}
+          alt="please-render"
+        />
       </li>
     );
   }

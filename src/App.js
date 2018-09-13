@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./App.css";
 import Nav from "./components/nav";
 import Header from "./components/header";
+import Form from "./components/form";
 import BookList from "./components/bookList";
 
 class App extends Component {
@@ -10,41 +10,25 @@ class App extends Component {
     books: []
   };
 
-  componentDidMount() {
-    axios
-      .get(
-        "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=" +
-          process.env.REACT_APP_NYT_API_KEY
-      )
-      .then(response => {
-        const nytBookList = response.data.results;
+  getBooks = async e => {
+    const formSearch = e.target.elements.formSearch.value;
+    e.preventDefault();
 
-        const filteredBookData = nytBookList.map(book => {
-          return {
-            isbn: book.isbns[1].isbn10,
-            author: book.book_details[0].author,
-            bookTitle: book.book_details[0].title,
-            description: book.book_details[0].description,
-            rank: book.rank,
-            weeksOnList: book.weeks_on_list,
-            publisher: book.book_details[0].publisher
-          };
-        });
+    const nytApiCall = await fetch(
+      "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=" +
+        process.env.REACT_APP_NYT_API_KEY
+    );
 
-        // create a new "State" object, don't change original state
-        const newState = Object.assign({}, this.state, {
-          books: filteredBookData
-        });
-        // storing state object in the component's state
-        this.setState(newState);
-      })
-      .catch(error => console.log(error));
-  }
+    const data = await nytApiCall.json();
+    this.setState({ books: data.results });
+    console.log("this.state.books", this.state.books);
+  };
 
   render() {
     return (
       <div className="container">
         <Nav />
+        <Form getBooks={this.getBooks} />
         <Header />
         <BookList books={this.state.books} />
       </div>
