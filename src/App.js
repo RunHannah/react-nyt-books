@@ -15,7 +15,9 @@ class App extends Component {
     e.preventDefault();
 
     const nytApiCall = await fetch(
-      "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=" +
+      "https://api.nytimes.com/svc/books/v3/lists.json?list=" +
+        formSearch +
+        "&api-key=" +
         process.env.REACT_APP_NYT_API_KEY
     );
 
