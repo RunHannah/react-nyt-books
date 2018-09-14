@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NytLogo from "../nyt-logo.png";
+import NytLogo from "../assets/nyt-logo.png";
 
 class Nav extends Component {
   render() {
