@@ -2,7 +2,7 @@
   "name": "nyt-books",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/RunHannah/react-nyt-books",
+  "homepage": "https://runhannah.github.io/react-nyt-books/",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^1.2.0",
