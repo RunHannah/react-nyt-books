@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 class Book extends Component {
   state = {
@@ -7,40 +7,48 @@ class Book extends Component {
     imageUrl: ""
   };
 
-  getWeeksOnList() {
+  getWeeksOnList = () => {
     return this.state.books.weeksOnList === 1
       ? "NEW THIS WEEK"
       : this.state.books.weeksOnList + " WEEKS ON THE LIST";
-  }
+  };
 
-  findBookCover(isbn) {
-    console.log("WHAT IS THE ISBN", isbn);
+  findBookCover = async isbn => {
+    const googleApiCall = await fetch(
+      "https://www.googleapis.com/books/v1/volumes?q=isbn:" +
+        isbn +
+        "&key=" +
+        process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
+    );
 
-    // fetch(
-    //   "https://www.googleapis.com/books/v1/volumes?q=isbn:" +
-    //     isbn +
-    //     "&key=" +
-    //     process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
-    // )
-    //   .then(response => {
-    //     console.log("response", response);
+    const data = await googleApiCall.json();
+    console.log("data", data);
+    const dataItems = data.items;
 
-    //     let image = response.data.items[0].volumeInfo.imageLinks.thumbnail;
-    //     image = image.replace(/^http:\/\//i, "https://");
+    // dataItems.forEach(function(i, item) {
+    //   let image = item.volumeInfo.imageLinks.thumbnail;
+    //   this.setState({ imageUrl: image });
+    //   return this.state.imageUrl;
+    // });
 
-    //     console.log("Image URL", image);
+    // console.log("WHAT IS THE ISBN", isbn);
+    // console.log("data drilling", data.items[0].volumeInfo.imageLinks.thumbnail);
 
-    //     const newState = Object.assign({}, this.state, {
-    //       imageUrl: image
-    //     });
+    // if (data.items && data.items[0].volumeInfo.imageLinks.thumbnail) {
+    //   let image = data.items[0].volumeInfo.imageLinks.thumbnail;
+    //   this.setState({ imageUrl: image });
+    // } else {
+    //   this.setState({ imageUrl: "No Book Image Available" });
+    // }
+    // return this.state.imageUrl;
 
-    //     this.setState(newState);
+    // let image = data[0].volumeInfo.imageLinks.thumbnail;
+    // image = image.replace(/^http:\/\//i, "https://");
+    // this.setState({ imageUrl: image });
+    // console.log("this.state.imageUrl", this.state.imageUrl);
 
-    //     console.log("this.state.imageUrl", this.state.imageUrl);
-    //     return this.state.imageUrl;
-    //   })
-    //   .catch(error => console.log(error));
-  }
+    // return this.state.imageUrl;
+  };
 
   render() {
     return (
@@ -56,11 +64,8 @@ class Book extends Component {
           src="http://books.google.com/books/content?id=bPJUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
           alt="google-book"
         /> */}
-        BOOK COVER:
-        <img
-          src={this.findBookCover(this.state.books.isbn)}
-          alt="please-render"
-        />
+        {/* BOOK COVER:
+        <img src={this.findBookCover()} alt="please-render" /> */}
       </li>
     );
   }

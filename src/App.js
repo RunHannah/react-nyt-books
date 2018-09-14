@@ -7,12 +7,16 @@ import BookList from "./components/bookList";
 
 class App extends Component {
   state = {
-    books: []
+    books: [],
+    format: ""
   };
 
   getBooks = async e => {
     const formSearch = e.target.elements.formSearch.value;
     e.preventDefault();
+    e.target.reset();
+
+    this.setState({ books: [] });
 
     const nytApiCall = await fetch(
       "https://api.nytimes.com/svc/books/v3/lists.json?list=" +
@@ -23,7 +27,9 @@ class App extends Component {
 
     const data = await nytApiCall.json();
     this.setState({ books: data.results });
+    this.setState({ format: formSearch });
     console.log("this.state.books", this.state.books);
+    console.log("format", this.state.format);
   };
 
   render() {
@@ -31,7 +37,7 @@ class App extends Component {
       <div className="container">
         <Nav />
         <Form getBooks={this.getBooks} />
-        <Header />
+        <Header format={this.state.format} />
         <BookList books={this.state.books} />
       </div>
     );

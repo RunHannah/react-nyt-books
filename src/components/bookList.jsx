@@ -2,8 +2,6 @@ import React from "react";
 import Book from "./book";
 
 const BookList = props => {
-  console.log("BookList Props", this.props);
-
   return (
     <div className="row bookList">
       <ol>
