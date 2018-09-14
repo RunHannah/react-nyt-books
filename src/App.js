@@ -8,16 +8,20 @@ import BookList from "./components/bookList";
 class App extends Component {
   state = {
     books: [],
-    format: ""
+    format: "" // book format i.e. hardcover-fiction
   };
 
+  // NYT API call for best sellers list
   getBooks = async e => {
-    const formSearch = e.target.elements.formSearch.value;
+    // from form component
+    let formSearch = e.target.elements.formSearch.value;
     e.preventDefault();
     e.target.reset();
 
+    // clear state for next search
     this.setState({ books: [] });
 
+    // make API request
     const nytApiCall = await fetch(
       "https://api.nytimes.com/svc/books/v3/lists.json?list=" +
         formSearch +
@@ -26,7 +30,36 @@ class App extends Component {
     );
 
     const data = await nytApiCall.json();
+
+    // setState with data
     this.setState({ books: data.results });
+
+    // to clean up form search, should use regex
+    if (formSearch === "hardcover-fiction") {
+      formSearch = "Hardcover Fiction";
+    }
+    if (formSearch === "hardcover-nonfiction") {
+      formSearch = "Hardcover Nonfiction";
+    }
+    if (formSearch === "combined-print-and-e-book-fiction") {
+      formSearch = "Combined Print & E-Book Fiction";
+    }
+    if (formSearch === "combined-print-and-e-book-nonfiction") {
+      formSearch = "Combined Print & E-Book Nonfiction";
+    }
+    if (formSearch === "paperback-nonfiction") {
+      formSearch = "Paperback Nonfiction";
+    }
+    if (formSearch === "advice-how-to-and-miscellaneous") {
+      formSearch = "Advice, How-To & Miscellaneous";
+    }
+    if (formSearch === "childrens-middle-grade-hardcover") {
+      formSearch = "Children's Middle Grade Hardcover";
+    }
+    if (formSearch === "young-adult-hardcover") {
+      formSearch = "Young Adult Hardcover";
+    }
+
     this.setState({ format: formSearch });
     console.log("this.state.books", this.state.books);
     console.log("format", this.state.format);
