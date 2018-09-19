@@ -13,6 +13,8 @@ class App extends Component {
 
   // NYT API call for best sellers list
   getBooks = async e => {
+    console.log("NYT API Books Called");
+
     // from form component
     let formSearch = e.target.elements.formSearch.value;
     e.preventDefault();
@@ -20,6 +22,7 @@ class App extends Component {
 
     // clear state for next search
     this.setState({ books: [] });
+    console.log("BOOKS STATE CLEARED");
 
     // make API request
     const nytApiCall = await fetch(
@@ -33,6 +36,7 @@ class App extends Component {
 
     // setState with data
     this.setState({ books: data.results });
+    console.log("this.state.books", this.state.books);
 
     // to clean up form search, should use regex
     if (formSearch === "hardcover-fiction") {
@@ -61,11 +65,49 @@ class App extends Component {
     }
 
     this.setState({ format: formSearch });
-    console.log("this.state.books", this.state.books);
-    console.log("format", this.state.format);
+
+    this.giantFunction();
   };
 
+  giantFunction() {
+    console.log("giant Function called");
+
+    let books = this.state.books;
+
+    books.forEach(function(book) {
+      console.log("inside books for each function");
+
+      let isbn = book.isbns[0].isbn10;
+      let image = "";
+      let imagesObject = {};
+
+      const googleApiCall = fetch(
+        "https://www.googleapis.com/books/v1/volumes?q=isbn:" +
+          isbn +
+          "&key=" +
+          process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
+      )
+        .then(data => data.json())
+        .then(function(data) {
+          let googleData = data.items;
+
+          if (googleData && data.items[0].volumeInfo.imageLinks.thumbnail) {
+            image = data.items[0].volumeInfo.imageLinks.thumbnail;
+          } else {
+            image = "no image available";
+          }
+          imagesObject[isbn] = image;
+          console.log("imagesObject", imagesObject);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    });
+  }
+
   render() {
+    console.log("App.js RENDERED");
+
     return (
       <div className="container">
         <Nav />

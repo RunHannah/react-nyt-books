@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class Book extends Component {
   state = {
     books: this.props,
-    imageUrl: ""
+    imageUrls: []
   };
 
   getWeeksOnList = () => {
@@ -13,44 +13,9 @@ class Book extends Component {
       : this.state.books.weeksOnList + " WEEKS ON THE LIST";
   };
 
-  findBookCover = async isbn => {
-    const googleApiCall = await fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=isbn:" +
-        isbn +
-        "&key=" +
-        process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
-    );
-
-    const data = await googleApiCall.json();
-    console.log("data", data);
-    const dataItems = data.items;
-
-    // dataItems.forEach(function(i, item) {
-    //   let image = item.volumeInfo.imageLinks.thumbnail;
-    //   this.setState({ imageUrl: image });
-    //   return this.state.imageUrl;
-    // });
-
-    // console.log("WHAT IS THE ISBN", isbn);
-    // console.log("data drilling", data.items[0].volumeInfo.imageLinks.thumbnail);
-
-    // if (data.items && data.items[0].volumeInfo.imageLinks.thumbnail) {
-    //   let image = data.items[0].volumeInfo.imageLinks.thumbnail;
-    //   this.setState({ imageUrl: image });
-    // } else {
-    //   this.setState({ imageUrl: "No Book Image Available" });
-    // }
-    // return this.state.imageUrl;
-
-    // let image = data[0].volumeInfo.imageLinks.thumbnail;
-    // image = image.replace(/^http:\/\//i, "https://");
-    // this.setState({ imageUrl: image });
-    // console.log("this.state.imageUrl", this.state.imageUrl);
-
-    // return this.state.imageUrl;
-  };
-
   render() {
+    console.log("Book Render");
+
     return (
       <li className="book">
         <p className="book-week">{this.getWeeksOnList()}</p>
@@ -59,13 +24,8 @@ class Book extends Component {
           by {this.state.books.author} | {this.state.books.publisher}
         </p>
         <p className="book-description">{this.state.books.description}</p>
-        {/* IMAGE:{" "}
-        <img
-          src="http://books.google.com/books/content?id=bPJUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-          alt="google-book"
-        /> */}
-        {/* BOOK COVER:
-        <img src={this.findBookCover()} alt="please-render" /> */}
+        BOOK COVER:
+        <img src={this.state.imageUrl} alt="please-render" />
       </li>
     );
   }
