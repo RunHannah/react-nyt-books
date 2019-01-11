@@ -1,5 +1,5 @@
-import React from "react";
-import Book from "./book";
+import React from 'react';
+import Book from './Book';
 
 const BookList = props => {
   return (
@@ -9,7 +9,7 @@ const BookList = props => {
           <div key={index}>
             <Book
               // key={index}
-              isbn={book.isbns[0].isbn10}
+              // imageUrl={book.isbns[0].isbn10}
               author={book.book_details[0].author}
               bookTitle={book.book_details[0].title}
               publisher={book.book_details[0].publisher}
