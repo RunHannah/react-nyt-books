@@ -4,7 +4,7 @@ Enter a valid search value to see a list of the week's best selling books!
 
 ### Deployed here: https://runhannah.github.io/react-nyt-books/
 
-<kbd><img src="src/assets/nyt-results.png" style="width: 400px;"></kbd>
+<kbd><img src="src/assets/nyt-results.jpeg" style="width: 400px;"></kbd>
 
 ## Installation
 
