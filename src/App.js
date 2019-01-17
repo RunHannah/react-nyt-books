@@ -34,6 +34,8 @@ class App extends Component {
     // setState with data
     this.setState({ books: data.results });
 
+    console.log('app.js state', this.state);
+
     // to clean up form search, should use regex
     if (formSearch === 'hardcover-fiction') {
       formSearch = 'Hardcover Fiction';
